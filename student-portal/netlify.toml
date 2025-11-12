@@ -1,13 +1,15 @@
 # Netlify configuration for Angular Student Portal
 
 [build]
-# Build command
+# Base directory for monorepo
+base = "student-portal"
+# Build command (will run inside the base directory)
 command = "npm run build"
 
-# Directory to deploy
+# Directory to deploy (relative to base)
 publish = "dist/student-portal/browser"
 
-# Node version
+# Node functions path
 functions = "netlify/functions"
 
 [build.environment]
