@@ -1,0 +1,49 @@
+# Netlify configuration for Angular Student Portal
+
+[build]
+# Build command
+command = "npm run build"
+
+# Directory to deploy
+publish = "dist/student-portal/browser"
+
+# Node version
+functions = "netlify/functions"
+
+[build.environment]
+# Build environment variables
+NODE_ENV = "production"
+NODE_VERSION = "18"
+
+# Redirect all non-file requests to index.html for client-side routing
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+# Headers for security and performance
+[[headers]]
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+Cache-Control = "public, max-age=0, must-revalidate"
+
+# Cache static assets
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=365d, immutable"
+
+[[headers]]
+for = "*.js"
+[headers.values]
+Cache-Control = "public, max-age=31536000"
+Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+for = "*.css"
+[headers.values]
+Cache-Control = "public, max-age=31536000"
+Content-Type = "text/css; charset=utf-8"
