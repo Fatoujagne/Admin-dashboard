@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd student-portal && npm install && npm run build",
+  "outputDirectory": "student-portal/dist/student-portal/browser",
+  "installCommand": "cd student-portal && npm install"
+}
